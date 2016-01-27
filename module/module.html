@@ -1,0 +1,44 @@
+<HTML>
+	<HEAD>
+		<TITLE>Module Pattern</TITLE>
+	</HEAD>
+	<BODY>
+		Module Pattern<br/><br/>
+		Number of clicks: <span id="showClicks">0</span>
+		<button onclick="showClicks()" />Click Me</button>
+		<button onclick="ClickService.showClicks()" />Click Me - Module</button>
+	</BODY>
+</HTML>
+<script type="text/javascript">
+/** clicks variable can be changed via dev tools**/
+var clicks = 0;
+function showClicks () {
+	clicks++;
+	document.getElementById('showClicks').innerHTML = clicks;
+	console.log('Function ' + clicks);
+}
+
+/** clicks is private within the module. No tampering is possible **/
+var ClickService = (function() {
+	//private
+	var clicks = 0;
+	
+	//Public
+	return {
+		showClicks: showClicks,
+		modifyClicks: modifyClicksPrivate
+	}
+	
+	function showClicks() {
+		clicks++
+		document.getElementById('showClicks').innerHTML = clicks;
+		console.log('Module ' + clicks);
+	}
+	
+	function modifyClicksPrivate(num) {
+		clicks = num;
+	}
+})();
+
+//var CSImpl = new ClickService();
+</script>
