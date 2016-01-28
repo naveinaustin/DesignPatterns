@@ -1,4 +1,4 @@
-Go to the folder above simple.
+Go to the folder above ocp.
 Execute the commands:
 1) javac ocp/*.java
 2) java -cp . ocp.Main
