@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE>Factory Pattern</TITLE>
+</HEAD>
+<BODY>
+Factory Pattern
+<script type="text/javascript">
+	var ProjectionsFactory = (function() {
+		return {
+			getInstance : function(key) {
+				var projection = NULLProjections
+				
+				if("CAPP" === key) {
+					projection = CAPPProjections;
+				} else if("API" === key) {
+					projection = APIProjections;
+				}
+				return projection;
+			}
+		};
+	})();
+	
+	var NULLProjections = (function() {
+		return {
+			executeProjections : function() {
+				throw "No Projection";
+			}
+		}
+	})();
+	var CAPPProjections = (function() {
+		return {
+			executeProjections : function() {
+				console.log("CAPP");
+			}
+		}
+	})();
+	
+	var APIProjections = (function() {
+		return {
+			executeProjections : function() {
+				console.log("API");
+			}
+		}
+	})()
+	
+	var A = ProjectionsFactory.getInstance("CAPP");
+	var B = ProjectionsFactory.getInstance("API");
+	var C = ProjectionsFactory.getInstance("API3");
+	
+	A.executeProjections();
+	B.executeProjections();
+	C.executeProjections();
+</script>
