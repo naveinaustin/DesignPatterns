@@ -1,12 +1,11 @@
-package registration.factory.ocpf;
+package ocp;
 
-//OCP followed
 public class Main {
 	static {
 		try
 		{
-			Class.forName("registration.factory.ocpf.APIProjections");
-			Class.forName("registration.factory.ocpf.CAPPProjections");
+			Class.forName("ocp.Square");
+			Class.forName("ocp.Rectangle");
 		}
 		catch (ClassNotFoundException cnfe)
 		{
@@ -14,12 +13,12 @@ public class Main {
 		}
 	}
 
-	public static void main(String[] args) {
-		Projections projections = ProjectionsFactory.getProjection("CAPP");
-		projections.executeProjections();
+	public static void main(String[] args) throws Exception {
+		Shape shape = ShapeFactory.getShape("SQUARE");
+		shape.calculateArea();
 		
-		projections = ProjectionsFactory.getProjection("API");
-		projections.executeProjections();
+		shape = ShapeFactory.getShape("RECTANGLE");
+		shape.calculateArea();
 	}
 
 }
