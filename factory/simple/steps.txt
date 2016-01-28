@@ -2,3 +2,5 @@ Go to the folder above simple.
 Execute the commands:
 1) javac simple/*.java
 2) java -cp . simple.Main
+
+For factory.html, check the dev tools console for the exception.

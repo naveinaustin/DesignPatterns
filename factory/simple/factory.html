@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE>Factory Pattern</TITLE>
+</HEAD>
+<BODY>
+Factory Pattern
+<script type="text/javascript">
+	var ShapeFactory = (function() {
+		return {
+			getInstance : function(key) {
+				var shape = NULLShape
+				
+				if("SQUARE" === key) {
+					shape = Square;
+				} else if("RECTANGLE" === key) {
+					shape = Rectangle;
+				}
+				return shape;
+			}
+		};
+	})();
+	
+	var NULLShape = (function() {
+		return {
+			calculateArea : function() {
+				throw "No shape";
+			}
+		}
+	})();
+	var Square = (function() {
+		return {
+			calculateArea : function() {
+				console.log("SQUARE");
+			}
+		}
+	})();
+	
+	var Rectangle = (function() {
+		return {
+			calculateArea : function() {
+				console.log("RECTANGLE");
+			}
+		}
+	})()
+	
+	var A = ShapeFactory.getInstance("SQUARE");
+	var B = ShapeFactory.getInstance("RECTANGLE");
+	var C = ShapeFactory.getInstance("SHAPE_DUMMY");
+	
+	A.calculateArea();
+	B.calculateArea();
+	C.calculateArea();
+</script>
