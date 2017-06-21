@@ -22,7 +22,7 @@ public class Main {
 			.and()
 			.columnValueEqual("employee_name", "Navein")
 			.and()
-			.columnIsNull("sfrregp_elective");
+			.columnIsNull("employee_contact");
 			
 		System.out.println(qb.toString());
 	}
